@@ -24,7 +24,9 @@ function generateUnion(params: GenerateUnionParams): void {
   editor.edit((builder) => {
     builder.insert(new Position(lineCount, 0), extension);
   });
-  vscode.window.showErrorMessage(`Generated union for ${params.className}`);
+  vscode.window.showInformationMessage(
+    `Generated union for ${params.className}`
+  );
 }
 
 function extensionBuilder(params: GenerateUnionParams) {
