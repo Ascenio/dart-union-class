@@ -1,15 +1,57 @@
-import * as assert from 'assert';
+import * as assert from "assert";
+import * as vscode from "vscode";
+import {
+  generateUnionCommand,
+  GenerateUnionParams,
+} from "../../commands/generate-union-command";
 
-// You can import and use all API from the 'vscode' module
-// as well as import your extension to test it
-import * as vscode from 'vscode';
-// import * as myExtension from '../../extension';
-
-suite('Extension Test Suite', () => {
-	vscode.window.showInformationMessage('Start all tests.');
-
-	test('Sample test', () => {
-		assert.strictEqual(-1, [1, 2, 3].indexOf(5));
-		assert.strictEqual(-1, [1, 2, 3].indexOf(0));
-	});
+suite("dart-union-class Test Suite", () => {
+  test("generates union correctly", async () => {
+    vscode.commands.registerCommand(
+      generateUnionCommand.command,
+      generateUnionCommand.handler
+    );
+    const params: GenerateUnionParams = {
+      className: "State",
+      subclasses: ["LoadingState", "LoadedState", "ErrorState"],
+    };
+    await vscode.commands.executeCommand(generateUnionCommand.command, params);
+    await vscode.workspace.openTextDocument({
+      content: "",
+      language: "dart",
+    });
+    const code = vscode.window.activeTextEditor?.document.getText()!;
+    const result = `${states}\n${code}`;
+    assert.strictEqual(result.trim(), expected.trim());
+  });
 });
+
+const states = `
+abstract class State {}
+
+class LoadingState implements State {}
+
+class LoadedState implements State {}
+
+class ErrorState implements State {}`;
+
+const expected = `${states}
+
+extension StateUnion on State {
+  T map<T>({
+    required T Function(LoadingState) loadingState,
+    required T Function(LoadedState) loadedState,
+    required T Function(ErrorState) errorState,
+  }) {
+    if (this is LoadingState) {
+      return loadingState(this as LoadingState);
+    }
+    if (this is LoadedState) {
+      return loadedState(this as LoadedState);
+    }
+    if (this is ErrorState) {
+      return errorState(this as ErrorState);
+    }
+    throw AssertionError('Union does not match any possible values');
+  }
+}`;
