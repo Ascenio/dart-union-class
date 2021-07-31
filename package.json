@@ -14,18 +14,9 @@
     "codeActionProvider": "true"
   },
   "activationEvents": [
-    "onLanguage:dart",
-    "onCommand:dart-union-class.createUnion"
+    "onLanguage:dart"
   ],
   "main": "./out/extension.js",
-  "contributes": {
-    "commands": [
-      {
-        "command": "dart-union-class.createUnion",
-        "title": "Hello World"
-      }
-    ]
-  },
   "scripts": {
     "vscode:prepublish": "yarn run compile",
     "compile": "tsc -p ./",
