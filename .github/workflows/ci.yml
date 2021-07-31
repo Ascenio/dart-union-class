@@ -3,7 +3,7 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: windows-2019
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -16,4 +16,4 @@ jobs:
       - name: Lint
         run: yarn lint
       - name: Test
-        run: xvfb-run -a yarn test
+        run: yarn test
