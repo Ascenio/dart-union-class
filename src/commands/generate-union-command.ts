@@ -15,12 +15,12 @@ export const generateUnionCommand: Command<GenerateUnionParams> = {
 
 function generateUnion(params: GenerateUnionParams): void {
   const extension = extensionBuilder(params);
-  const lineCount = vscode.window.activeTextEditor?.document.lineCount;
   const editor = vscode.window.activeTextEditor;
-  if (!lineCount || !editor) {
+  if (!editor) {
     vscode.window.showErrorMessage("Coulnd't generate union class");
     return;
   }
+  const lineCount = editor.document.lineCount;
   editor.edit((builder) => {
     builder.insert(new Position(lineCount, 0), extension);
   });
