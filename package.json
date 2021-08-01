@@ -1,7 +1,7 @@
 {
   "name": "dart-union-class",
   "displayName": "Dart Union Class",
-  "description": "generates extensions to make unions possible",
+  "description": "Generates simple extension methods to simulate unions in Dart",
   "repository": "https://github.com/Ascenio/dart-union-class",
   "publisher": "Ascenio",
   "icon": "assets/logo.png",
