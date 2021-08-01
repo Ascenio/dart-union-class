@@ -3,6 +3,7 @@
   "displayName": "Dart Union Class",
   "description": "generates extensions to make unions possible",
   "repository": "https://github.com/Ascenio/dart-union-class",
+  "publisher": "Ascenio",
   "version": "0.0.1",
   "license": "MIT",
   "engines": {
