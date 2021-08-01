@@ -1,10 +1,10 @@
-# Dart Union Class
+# <img src="assets/logo.svg" height="24"> Dart Union Class
 
 Generates *simple* extension methods to simulate unions in Dart. No need for code generation, because I'm sure we all love that.
 
 ![demo](assets/demo.gif)
 
-## Features
+## :muscle: Features
 
 ### `map`
 
@@ -46,6 +46,6 @@ Widget build(BuildContext context) {
 }
 ```
 
-## Inspiration
+## :shipit: Inspiration
 
 Totally original idea right there. Definitely not inspired by [Dart Data Class](https://github.com/bnxm/dart-data-class-generator) and [Freezed](https://github.com/rrousselGit/freezed).
