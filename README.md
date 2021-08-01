@@ -32,7 +32,7 @@ But also return values accordingly.
 ```dart
 Widget build(BuildContext context) {
   final state = getUser();
-  state.map(
+  return state.map<Widget>(
     loadingState: (_) {
       return CircularProgressIndicator();
     },
