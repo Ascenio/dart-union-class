@@ -1,4 +1,4 @@
-# <img src="assets/logo.svg" height="24"> Dart Union Class
+# <img src="assets/logo.png" height="24"> Dart Union Class
 
 Generates *simple* extension methods to simulate unions in Dart. No need for code generation, because I'm sure we all love that.
 
