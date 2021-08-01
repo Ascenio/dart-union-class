@@ -21,23 +21,11 @@ suite("dart-union-class Test Suite", () => {
       language: "dart",
     });
     const code = vscode.window.activeTextEditor?.document.getText()!;
-    const result = `${states}\n${code}`;
-    assert.strictEqual(result.trim(), expected.trim());
+    assert.strictEqual(code.trim(), expected.trim());
   });
 });
 
-const states = `
-abstract class State {}
-
-class LoadingState implements State {}
-
-class LoadedState implements State {}
-
-class ErrorState implements State {}`;
-
-const expected = `${states}
-
-extension StateUnion on State {
+const expected = `extension StateUnion on State {
   T map<T>({
     required T Function(LoadingState) loadingState,
     required T Function(LoadedState) loadedState,
